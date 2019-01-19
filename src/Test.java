@@ -17,9 +17,37 @@ import org.jsoup.select.*;
 public class Test {
 
 	public static void main(String[] args) {
+		BenchMark model = new BenchMark("title", "date", "time");
+		View view = new View();
+		view.displayView(model);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		/*Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int width = screenSize.width;
-		int height = screenSize.height;*/
+		int height = screenSize.height;
 
 		File input = new File("test.html");
 		try {
@@ -47,9 +75,9 @@ public class Test {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO: get data from file and send to google sheets
-					/*
-					 * System.out.println(title.text()); System.out.println(res.text());
-					 */
+					
+					 System.out.println(title.text()); System.out.println(res.text());
+					
 					if (text.getText().isEmpty()) {
 						System.out.println("Error: Please select a compatible file");
 					} else {
@@ -88,7 +116,7 @@ public class Test {
 		} catch (IOException e) {
 			System.out.println("Error!");
 			e.printStackTrace();
-		}
+		}*/
 
 	}
 

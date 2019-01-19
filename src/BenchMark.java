@@ -4,8 +4,10 @@
  * the model for the data
  */
 import java.io.*;
+import java.util.HashMap;
 //import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.*;
@@ -23,6 +25,7 @@ public class BenchMark {
     private String maxFps;
     private String result;
     private List<String> table;
+    private Map<String, String> map;
 
     public BenchMark(File file) {
         parseHtml(file);
@@ -59,6 +62,7 @@ public class BenchMark {
     public void setMaxFps(String maxFps){this.maxFps = maxFps;}
 
     public void parseHtml(File file){
+        map = new HashMap<String, String>();
         try{
             Document doc = Jsoup.parse(file, "UTF-8", "");
             //Elements title = doc.getElementsByTag("title");
@@ -87,6 +91,12 @@ public class BenchMark {
 
             System.out.println("Values: " + values);
             System.out.println("Keys: " + keys);
+
+            for(int i = 0; i < keys.size(); i++){
+                map.put(keys.get(i), values.get(i));
+            }
+
+            System.out.println(map.toString());
 
             if(values.size() == keys.size()){
                 System.out.println("CONGRATS THEY ARE THE SAME NIGGA");
