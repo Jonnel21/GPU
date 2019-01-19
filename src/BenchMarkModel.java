@@ -13,7 +13,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.*;
 import org.jsoup.select.*;
 
-public class BenchMark {
+public class BenchMarkModel {
 
     private String title;
     private String fileType;
@@ -27,14 +27,14 @@ public class BenchMark {
     private List<String> table;
     private Map<String, String> map;
 
-    public BenchMark(File file) {
+    public BenchMarkModel(File file) {
         parseHtml(file);
     }
 
-    public BenchMark(String title, String fileType) {
+    public BenchMarkModel(String title, String fileType) {
     }
 
-    public BenchMark(String title, String date, String time) {
+    public BenchMarkModel(String title, String date, String time) {
         this.title = title;
         this.date = date;
         this.time = time;
@@ -130,7 +130,7 @@ public class BenchMark {
             this.table = rows.eachText();
             System.out.println(table);*/
             File file = new File("test.html");
-            BenchMark test = new BenchMark(file);
+            BenchMarkModel test = new BenchMarkModel(file);
            
 
 
