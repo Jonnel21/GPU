@@ -5,5 +5,6 @@ public class Test {
 		BenchMarkController controller = new BenchMarkController(model, view);
 		
 		controller.displayView();
+		controller.updateView(model);
 	}
 }

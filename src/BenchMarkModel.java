@@ -50,6 +50,7 @@ public class BenchMarkModel {
     public String getMinFps(){return this.minFps;}
     public String getMaxFps(){return this.maxFps;}
     public String getResult(){return this.result;}
+    public Map<String,String> getMap(){return map;}
 
     // setter methods
     public void setTitle(String title){this.title = title;}
@@ -107,6 +108,7 @@ public class BenchMarkModel {
             e.printStackTrace();
         }
     }
+
 
     public static void main(String[] args) {
         File input = new File("test.html");

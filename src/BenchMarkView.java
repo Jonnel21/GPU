@@ -7,10 +7,17 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class BenchMarkView extends JFrame {
-    private BenchMarkModel model;
+    private JPanel panel;
+    private JButton browse;
+    private JButton send;
+    private JTextField text;
+    private JTextArea console;
+
+    private BenchMarkController controller;
 
     public BenchMarkView() {
         super();
@@ -20,12 +27,13 @@ public class BenchMarkView extends JFrame {
         super(name);
     }
 
-    public void displayView(BenchMarkModel model) {
-        this.model = model;
-        JPanel panel = new JPanel();
-        JButton browse = new JButton("Browse");
-        JButton send = new JButton("Send");
-        JTextField text = new JTextField(30);
+    public void displayView() {
+        
+        panel = new JPanel();
+        browse = new JButton("Browse");
+        send = new JButton("Send");
+        text = new JTextField(30);
+        console = new JTextArea(30,30);
 
         BenchMarkView v = new BenchMarkView("test");
         v.setLayout(new BorderLayout());
@@ -33,6 +41,7 @@ public class BenchMarkView extends JFrame {
         panel.add(text);
         panel.add(browse);
         panel.add(send);
+        panel.add(console);
 
         v.add(panel, BorderLayout.CENTER);
         addListeners(text, browse, send);
@@ -42,9 +51,23 @@ public class BenchMarkView extends JFrame {
 
     }
 
-    public void updateView(BenchMarkModel model){
+
+    public void updateView(BenchMarkView v){
         // TODO: update view depending on the model
+        // add listeners here?
+        //addListeners(text, browse, send);
+       
+
+        
     }
+
+    // getter methods
+    public JPanel getPanel(){return this.panel;}
+    public JButton getBrowse(){return this.browse;}
+    public JButton getSend(){return this.send;}
+    public JTextField getText(){return this.text;}
+    public JTextArea getConsole(){return this.console;}
+
 
     public void addListeners(JTextField text, JButton... b1) {
 
