@@ -24,17 +24,24 @@ public class BenchMarkModel {
     private String minFps;
     private String maxFps;
     private String result;
+    private File fileName;
     private List<String> table;
     private Map<String, String> map;
 
-    public BenchMarkModel(File file) {
-        parseHtml(file);
+    public BenchMarkModel(){
+        
+    }
+
+    public BenchMarkModel(File fileName) {
+        this.fileName = fileName;
+        parseHtml(fileName);
     }
 
     public BenchMarkModel(String title, String fileType) {
     }
 
-    public BenchMarkModel(String title, String date, String time) {
+    public BenchMarkModel(File fileName, String title, String date, String time) {
+        this.fileName = fileName;
         this.title = title;
         this.date = date;
         this.time = time;
@@ -50,6 +57,7 @@ public class BenchMarkModel {
     public String getMinFps(){return this.minFps;}
     public String getMaxFps(){return this.maxFps;}
     public String getResult(){return this.result;}
+    public File getFileName(){return this.fileName;}
     public Map<String,String> getMap(){return map;}
 
     // setter methods
@@ -66,8 +74,6 @@ public class BenchMarkModel {
         map = new HashMap<String, String>();
         try{
             Document doc = Jsoup.parse(file, "UTF-8", "");
-            //Elements title = doc.getElementsByTag("title");
-            //Elements res = doc.getElementsByClass("result");
             Elements rows = doc.getElementsByTag("tr");
             System.out.println(rows.nextAll().text());
             this.table = rows.eachText();

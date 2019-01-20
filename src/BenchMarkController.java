@@ -1,11 +1,12 @@
+import java.io.File;
 import java.util.Map;
-
 import javax.swing.*;
 
 public class BenchMarkController {
 
     private BenchMarkModel model;
     private BenchMarkView view;
+    private File selectedFile;
 
     public BenchMarkController(BenchMarkModel model, BenchMarkView view){
         this.model = model;
@@ -22,6 +23,8 @@ public class BenchMarkController {
     public String getMinFps(){return model.getMinFps();}
     public String getMaxFps(){return model.getMaxFps();}
     public String getResult(){return model.getResult();}
+    public File getFileName(){return model.getFileName();}
+    public File getSelectedFile(){return view.getSelectedFile();} // from view
     public Map<String,String> getMap(){return model.getMap();}
 
     public JPanel getPanel(){return view.getPanel();}
@@ -39,8 +42,10 @@ public class BenchMarkController {
     public void setScore(String score){model.setScore(score);}
     public void setMinFps(String minFps){model.setMinFps(minFps);}
     public void setMaxFps(String maxFps){model.setMaxFps(maxFps);}
+    public void setSelectedFile(File selectedFile){this.selectedFile = selectedFile;}
 
     public void updateView(BenchMarkModel m){
+        m.parseHtml(getSelectedFile());
         Map<String,String> data = getMap();
         //view.updateView(view);
         getConsole().setText(data.toString());
