@@ -17,6 +17,7 @@ public class BenchMarkView extends JFrame {
     private JTextField text;
     private JTextArea console;
     private File selectedFile;
+    private BenchMarkController controller;
 
     public BenchMarkView() {
         super();
@@ -47,6 +48,7 @@ public class BenchMarkView extends JFrame {
         v.add(panel, BorderLayout.CENTER);
         addListeners(text, browse, send);
 
+        v.setDefaultCloseOperation(EXIT_ON_CLOSE);
         v.pack();
         v.setVisible(true);
 
@@ -85,8 +87,10 @@ public class BenchMarkView extends JFrame {
 
                 if(returnVal == JFileChooser.APPROVE_OPTION){
                     File file = fc.getSelectedFile();
+                    System.out.println(file);
                     setSelectedFile(file);
-                    System.out.println(file.getName());
+                    //controller.updateModel(file);
+                    //System.out.println("From View: " + controller.getFileName().getName());
                     text.setText(file.getName());
                     
                 }

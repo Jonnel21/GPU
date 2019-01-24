@@ -44,14 +44,24 @@ public class BenchMarkController {
     public void setMaxFps(String maxFps){model.setMaxFps(maxFps);}
     public void setSelectedFile(File selectedFile){this.selectedFile = selectedFile;}
 
-    public void updateView(BenchMarkModel m){
-        m.parseHtml(getSelectedFile());
-        Map<String,String> data = getMap();
-        //view.updateView(view);
-        getConsole().setText(data.toString());
-        // model communicates to controller what data is to be changed
-        // controller then takes data from model in order
-        // to update view
+    /*public void updateView(BenchMarkModel m){
+        if(getSelectedFile() == null){
+            System.out.println("Error: please enter a file");
+        }
+        else{
+            m.parseHtml(getSelectedFile());
+            Map<String,String> data = getMap();
+            //view.updateView(view);
+            getConsole().setText(data.toString());
+            // model communicates to controller what data is to be changed
+            // controller then takes data from model in order
+            // to update view
+            view.repaint();
+        }
+    }*/
+
+    public void updateModel(File file){
+        model.setSelectedFile(file);
     }
 
     public void displayView(){

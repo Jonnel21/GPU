@@ -5,7 +5,7 @@ public class Test {
 		BenchMarkController controller = new BenchMarkController(model, view);
 		
 		controller.displayView();
-		System.out.println(controller.getSelectedFile());
-		controller.updateView(model);
+		//System.out.println(controller.getSelectedFile());
+		//controller.updateView(model);
 	}
 }

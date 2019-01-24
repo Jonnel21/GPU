@@ -29,7 +29,12 @@ public class BenchMarkModel {
     private Map<String, String> map;
 
     public BenchMarkModel(){
-        
+        if(fileName == null){
+            System.out.println("Please load file.");
+        } else{
+            parseHtml(this.fileName);
+        }
+       
     }
 
     public BenchMarkModel(File fileName) {
@@ -69,6 +74,7 @@ public class BenchMarkModel {
     public void setScore(String score){this.score = score;}
     public void setMinFps(String minFps){this.minFps = minFps;}
     public void setMaxFps(String maxFps){this.maxFps = maxFps;}
+    public void setSelectedFile(File file){fileName = file;}
 
     public void parseHtml(File file){
         map = new HashMap<String, String>();
