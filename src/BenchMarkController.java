@@ -45,13 +45,14 @@ public class BenchMarkController {
     public void setSelectedFile(File selectedFile){this.selectedFile = selectedFile;}
 
     public void updateView(BenchMarkModel m){
-        m.parseHtml(getSelectedFile());
-        Map<String,String> data = getMap();
+        //m.parseHtml(getSelectedFile());
+        //Map<String,String> data = getMap();
         //view.updateView(view);
-        getConsole().setText(data.toString());
+        //getConsole().setText(data.toString());
         // model communicates to controller what data is to be changed
         // controller then takes data from model in order
         // to update view
+        System.out.println("From updateView method in controller class: " + getSelectedFile());
     }
 
     public void displayView(){

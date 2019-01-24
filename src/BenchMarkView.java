@@ -1,7 +1,12 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
+import java.util.Random;
+import org.apache.commons.impl.DefaultFileMonitor;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -45,6 +50,15 @@ public class BenchMarkView extends JFrame {
         console.setLineWrap(true);
 
         v.add(panel, BorderLayout.CENTER);
+        /*text.addPropertyChangeListener("background", new PropertyChangeListener(){
+        
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                System.out.println("PropertyChange in View class: " + evt.getSource());
+                System.out.println("PropertyChange in View Class Old Value : " + evt.getOldValue());
+                System.out.println("PropertyChange in View Class New Value : " + evt.getNewValue());
+            }
+        });*/
         addListeners(text, browse, send);
 
         v.pack();
@@ -70,6 +84,7 @@ public class BenchMarkView extends JFrame {
     public JTextArea getConsole(){return this.console;}
     public File getSelectedFile(){return selectedFile;}
 
+    // setter methods
     public void setSelectedFile(File selectedFile){this.selectedFile = selectedFile;}
 
 
@@ -86,8 +101,19 @@ public class BenchMarkView extends JFrame {
                 if(returnVal == JFileChooser.APPROVE_OPTION){
                     File file = fc.getSelectedFile();
                     setSelectedFile(file);
-                    System.out.println(file.getName());
+                    System.out.println("From addListeners method in view class: " + file.getName());
                     text.setText(file.getName());
+                    text.setBackground(new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255)));
+
+                    FileSystemManager fsManager = VFS.getManager();
+                    FileObject listendir = fsManager.resolveFile(file);
+                    DefaultFileMonitor fm = new DefaultFileMonitor(new CustomFileListener());
+
+                    fm.setRecursive(true);
+                    fm.addFile(listendir);
+                    fm.start();
+
+                    
                     
                 }
                 

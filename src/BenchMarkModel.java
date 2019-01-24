@@ -3,6 +3,8 @@
  * This class is to represent
  * the model for the data
  */
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.*;
 import java.util.HashMap;
 //import java.text.SimpleDateFormat;
@@ -13,7 +15,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.*;
 import org.jsoup.select.*;
 
-public class BenchMarkModel {
+public class BenchMarkModel implements PropertyChangeListener{
 
     private String title;
     private String fileType;
@@ -29,7 +31,6 @@ public class BenchMarkModel {
     private Map<String, String> map;
 
     public BenchMarkModel(){
-        
     }
 
     public BenchMarkModel(File fileName) {
@@ -147,7 +148,12 @@ public class BenchMarkModel {
         }
 
         
-
     }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        System.out.println(evt.getSource());
+
+	}
     
 }
