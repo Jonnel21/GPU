@@ -26,6 +26,9 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation("junit:junit:4.12")
+
+    // jsoup HTML parser library @ https://jsoup.org/
+    compile("org.jsoup:jsoup:1.11.3")
 }
 
 application {
