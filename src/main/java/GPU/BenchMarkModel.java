@@ -1,4 +1,4 @@
-
+package GPU;
 /**
  * This class is to represent
  * the model for the data
@@ -7,13 +7,12 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.*;
 import java.util.HashMap;
-//import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
-import org.jsoup.Jsoup;
+/*import org.jsoup.Jsoup;
 import org.jsoup.nodes.*;
-import org.jsoup.select.*;
+import org.jsoup.select.*;*/
 
 public class BenchMarkModel implements PropertyChangeListener{
 
@@ -34,14 +33,15 @@ public class BenchMarkModel implements PropertyChangeListener{
         if(fileName == null){
             System.out.println("Please load file.");
         } else{
-            parseHtml(this.fileName);
+            //parseHtml(this.fileName);
+            System.out.println("Please load file.");
         }
        
     }
 
     public BenchMarkModel(File fileName) {
         this.fileName = fileName;
-        parseHtml(fileName);
+        //parseHtml(fileName);
     }
 
     public BenchMarkModel(String title, String fileType) {
@@ -78,7 +78,7 @@ public class BenchMarkModel implements PropertyChangeListener{
     public void setMaxFps(String maxFps){this.maxFps = maxFps;}
     public void setSelectedFile(File file){fileName = file;}
 
-    public void parseHtml(File file){
+    /*public void parseHtml(File file){
         map = new HashMap<String, String>();
         try{
             Document doc = Jsoup.parse(file, "UTF-8", "");
@@ -121,7 +121,7 @@ public class BenchMarkModel implements PropertyChangeListener{
         catch(IOException e){
             e.printStackTrace();
         }
-    }
+    }*/
 
 
     public static void main(String[] args) {
@@ -133,8 +133,8 @@ public class BenchMarkModel implements PropertyChangeListener{
 
        
         try {
-            Document doc = Jsoup.parse(input, "UTF-8", "");
-            System.out.println(doc.toString());
+            //Document doc = Jsoup.parse(input, "UTF-8", "");
+            //System.out.println(doc.toString());
 
             //Elements title = doc.getElementsByTag("title");
             //System.out.println(title.text());

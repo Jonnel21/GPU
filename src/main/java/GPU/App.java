@@ -1,4 +1,5 @@
-public class Test {
+package GPU;
+public class App {
 	public static void main(String[] args) {
 		BenchMarkModel model = new BenchMarkModel();
 		BenchMarkView view = new BenchMarkView();

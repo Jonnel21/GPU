@@ -1,3 +1,4 @@
+package GPU;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -6,7 +7,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.Random;
-import org.apache.commons.impl.DefaultFileMonitor;
+//import org.apache.commons.impl.DefaultFileMonitor;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -108,13 +109,13 @@ public class BenchMarkView extends JFrame {
                     text.setText(file.getName());
                     text.setBackground(new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255)));
 
-                    FileSystemManager fsManager = VFS.getManager();
+                    /*FileSystemManager fsManager = VFS.getManager();
                     FileObject listendir = fsManager.resolveFile(file);
                     DefaultFileMonitor fm = new DefaultFileMonitor(new CustomFileListener());
 
                     fm.setRecursive(true);
                     fm.addFile(listendir);
-                    fm.start();
+                    fm.start();*/
 
                     
                     
